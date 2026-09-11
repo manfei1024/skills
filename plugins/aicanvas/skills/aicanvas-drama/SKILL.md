@@ -29,7 +29,7 @@ description: |
 
 按顺序，一条不过就停下：
 
-1. **凭证** —— `AICANVAS_HOST` 缺失就使用正式默认地址 `https://aicanvas.qnlinking.com`；只有本地/私有部署才覆盖。检查 `AICANVAS_API_KEY`，缺失就让用户在环境中配置，不要让他贴进对话。跑 `GET /api/auth/me` 验证，`Unauthorized` 就直接停。
+1. **凭证** —— `AICANVAS_HOST` 缺失就使用正式默认地址 `https://click.vibehub.art`；只有本地/私有部署才覆盖。检查 `AICANVAS_API_KEY`，缺失就让用户在环境中配置，不要让他贴进对话。跑 `GET /api/auth/me` 验证，`Unauthorized` 就直接停。
 2. **续跑** —— 当前目录有没有 `AICANVAS-*.json`？按项目名和 host 唯一匹配，先恢复每种任务自己的服务端状态。无法唯一匹配就让用户选择；**绝不随便取第一个或直接新建**。见 [async-tasks.md](../../common/async-tasks.md#恢复流程blocking)。
 3. **模型** —— `GET /api/ai/model-list?model_type=image` 和 `?model_type=video`。**禁止硬编码模型 ID / 分辨率 / 画幅**。这个接口不用鉴权，可以最先调。
 

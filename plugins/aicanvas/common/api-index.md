@@ -3,7 +3,7 @@
 按灯虹已发布的单接口文档页逐条核对而来。若在别处（旧版本、缓存、二手整理）看到与本表冲突的接口清单，**以单接口文档页为准**。
 
 约定：
-- Base URL = `${AICANVAS_HOST:-https://aicanvas.qnlinking.com}`
+- Base URL = `${AICANVAS_HOST:-https://click.vibehub.art}`
 - 除注明外都需要 `Authorization: Bearer $AICANVAS_API_KEY`
 - `{}` = 路径参数
 - **💰** = 会扣积分

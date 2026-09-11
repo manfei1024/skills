@@ -25,7 +25,7 @@ description: |
 
 ## 开工检查（BLOCKING）
 
-`AICANVAS_HOST` 缺失就使用正式默认地址 `https://aicanvas.qnlinking.com`；本地/私有部署才覆盖。`AICANVAS_API_KEY` 缺失就让用户在环境中配置，不要让他贴进对话。跑 `GET /api/auth/me` 验，`Unauthorized` 就停。
+`AICANVAS_HOST` 缺失就使用正式默认地址 `https://click.vibehub.art`；本地/私有部署才覆盖。`AICANVAS_API_KEY` 缺失就让用户在环境中配置，不要让他贴进对话。跑 `GET /api/auth/me` 验，`Unauthorized` 就停。
 
 ---
 

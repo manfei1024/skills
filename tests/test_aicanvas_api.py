@@ -17,7 +17,7 @@ SPEC.loader.exec_module(aicanvas_api)
 
 class AICanvasApiTests(unittest.TestCase):
     def test_host_requires_clean_https_origin(self):
-        self.assertEqual(aicanvas_api.DEFAULT_AICANVAS_HOST, "https://aicanvas.qnlinking.com")
+        self.assertEqual(aicanvas_api.DEFAULT_AICANVAS_HOST, "https://click.vibehub.art")
         self.assertEqual(aicanvas_api.validate_host("https://aicanvas.example"), "https://aicanvas.example")
         self.assertEqual(aicanvas_api.validate_host("http://127.0.0.1:8080"), "http://127.0.0.1:8080")
         self.assertEqual(aicanvas_api.validate_host("http://localhost:8080"), "http://localhost:8080")
@@ -126,7 +126,7 @@ class AICanvasApiTests(unittest.TestCase):
         ):
             aicanvas_api.request_json("GET", "/api/auth/me")
         default_request = opener.open.call_args.args[0]
-        self.assertEqual(default_request.full_url, "https://aicanvas.qnlinking.com/api/auth/me")
+        self.assertEqual(default_request.full_url, "https://click.vibehub.art/api/auth/me")
 
         opener.open.return_value = Response({"code": 40001, "message": "InvalidParameter"})
         with mock.patch.dict(os.environ, env, clear=True), mock.patch.object(

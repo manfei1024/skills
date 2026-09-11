@@ -37,7 +37,7 @@ JSON 请求与扣费提交使用 [`common/scripts/aicanvas_api.py`](../../common
 6. **鉴权门** —— 只有即将调用鉴权接口或提交生成时才检查 `AICANVAS_API_KEY`。缺失或格式不正确就让用户在运行 agent 的环境中配置并重启/刷新会话；不要让用户把密钥贴进对话。然后用 `GET /api/auth/me` 验证，`Unauthorized` 就停。
 7. **扣费确认** —— 给出本次预估积分、团队账户扣费及不可中止/退款说明，等待用户明确确认后才提交。
 
-`AICANVAS_HOST` 未设置时默认使用 `https://aicanvas.qnlinking.com`。本地或私有部署必须设置带协议的完整 origin，例如 `http://127.0.0.1:8080` 或 `https://dev-aicanvas.qnlinking.com`；裸域名 `dev-aicanvas.qnlinking.com` 无效。所有 JSON HTTP 请求都通过共享脚本执行，不能把示例中的默认域名复制成实际请求从而绕过环境变量。
+`AICANVAS_HOST` 未设置时默认使用 `https://click.vibehub.art`。本地或私有部署必须设置带协议的完整 origin，例如 `http://127.0.0.1:8080` 或 `https://dev-aicanvas.qnlinking.com`；裸域名 `dev-aicanvas.qnlinking.com` 无效。所有 JSON HTTP 请求都通过共享脚本执行，不能把示例中的默认域名复制成实际请求从而绕过环境变量。
 
 实时模型列表请求失败时，只做只读重试和网络/DNS/Host 诊断。仍不可用就停止选型并报告具体错误；**不得要求用户手填模型 ID，不得用缓存或记忆值绕过。**
 

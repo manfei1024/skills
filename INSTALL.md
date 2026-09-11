@@ -16,7 +16,7 @@
 export AICANVAS_API_KEY="cak_..."
 ```
 
-默认请求 `https://aicanvas.qnlinking.com`，普通用户不用设置 Host。本地运行 canvas 时覆盖为 `export AICANVAS_HOST="http://127.0.0.1:8080"`。5173 是 Vite 前端及浏览器入口；虽然会代理 `/api`，Skill 的 API 测试应直连 8080。
+默认请求 `https://click.vibehub.art`，普通用户不用设置 Host。本地运行 canvas 时覆盖为 `export AICANVAS_HOST="http://127.0.0.1:8080"`。5173 是 Vite 前端及浏览器入口；虽然会代理 `/api`，Skill 的 API 测试应直连 8080。
 
 写进 `~/.zshrc` / `~/.bashrc` 或用你惯用的密钥管理工具。**不要提交到 git。**
 
@@ -75,8 +75,8 @@ https://raw.githubusercontent.com/AI-Hub-Growth/skills/main/plugins/aicanvas/ski
 手动验：
 
 ```bash
-curl -s "${AICANVAS_HOST:-https://aicanvas.qnlinking.com}/api/auth/me" -H "Authorization: Bearer $AICANVAS_API_KEY"
-curl -s "${AICANVAS_HOST:-https://aicanvas.qnlinking.com}/api/ai/model-list?model_type=video"
+curl -s "${AICANVAS_HOST:-https://click.vibehub.art}/api/auth/me" -H "Authorization: Bearer $AICANVAS_API_KEY"
+curl -s "${AICANVAS_HOST:-https://click.vibehub.art}/api/ai/model-list?model_type=video"
 ```
 
 第一条返回 `Unauthorized` → 密钥无效、过期或已停用，去控制台重置。

@@ -51,7 +51,7 @@ plugins/aicanvas/
 export AICANVAS_API_KEY="cak_..."
 ```
 
-Host 默认 `https://aicanvas.qnlinking.com`。本地开发或私有部署才通过 `AICANVAS_HOST` 覆盖；本地 canvas 用 `http://127.0.0.1:8080`。
+Host 默认 `https://click.vibehub.art`。本地开发或私有部署才通过 `AICANVAS_HOST` 覆盖；本地 canvas 用 `http://127.0.0.1:8080`。
 
 `AICANVAS_API_KEY` **只能在灯虹控制台创建**：个人中心 → API Keys → 新建。需要团队 owner 或 admin 身份。明文只显示一次。
 
@@ -63,10 +63,10 @@ Host 默认 `https://aicanvas.qnlinking.com`。本地开发或私有部署才通
 
 ```bash
 # 不需要鉴权，先验连通
-curl -s "${AICANVAS_HOST:-https://aicanvas.qnlinking.com}/api/ai/model-list?model_type=video"
+curl -s "${AICANVAS_HOST:-https://click.vibehub.art}/api/ai/model-list?model_type=video"
 
 # 验凭证
-curl -s "${AICANVAS_HOST:-https://aicanvas.qnlinking.com}/api/auth/me" -H "Authorization: Bearer $AICANVAS_API_KEY"
+curl -s "${AICANVAS_HOST:-https://click.vibehub.art}/api/auth/me" -H "Authorization: Bearer $AICANVAS_API_KEY"
 ```
 
 第一条通了说明默认地址或 `AICANVAS_HOST` 覆盖值可达。第二条返回身份信息说明密钥有效；返回 `Unauthorized` 就告诉用户去控制台重置，**不要继续往下跑**。

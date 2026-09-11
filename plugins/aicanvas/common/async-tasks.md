@@ -26,7 +26,7 @@ python3 "$AICANVAS_API" request GET "/api/ai/tasks/$TASK_ID" \
   --expect data.status
 ```
 
-脚本只允许以 `/api/` 开头的相对路径，且只会把凭证发往经过校验的 Host：默认 `https://aicanvas.qnlinking.com`，设置 `AICANVAS_HOST` 时使用覆盖值。它不会跟随重定向，也不会把 API Key 写进输出。
+脚本只允许以 `/api/` 开头的相对路径，且只会把凭证发往经过校验的 Host：默认 `https://click.vibehub.art`，设置 `AICANVAS_HOST` 时使用覆盖值。它不会跟随重定向，也不会把 API Key 写进输出。
 
 ## BLOCKING：没有 stop 接口
 

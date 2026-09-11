@@ -24,7 +24,7 @@
 export AICANVAS_API_KEY="cak_..."     # 控制台「个人中心 → API Keys」创建
 ```
 
-默认 API 地址是 `https://aicanvas.qnlinking.com`。只有本地开发或私有部署才设置 `AICANVAS_HOST` 覆盖，例如 `http://127.0.0.1:8080`。
+默认 API 地址是 `https://click.vibehub.art`。只有本地开发或私有部署才设置 `AICANVAS_HOST` 覆盖，例如 `http://127.0.0.1:8080`。
 
 ## 三件必须知道的事
 

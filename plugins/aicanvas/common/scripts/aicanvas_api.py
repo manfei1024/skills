@@ -20,7 +20,7 @@ from typing import Any
 
 KEY_RE = re.compile(r"cak_[0-9a-fA-F]{48}")
 TERMINAL_STATUSES = {"completed", "failed", "succeeded", "approved"}
-DEFAULT_AICANVAS_HOST = "https://aicanvas.qnlinking.com"
+DEFAULT_AICANVAS_HOST = "https://click.vibehub.art"
 
 
 class AICanvasError(RuntimeError):
