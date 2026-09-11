@@ -1,19 +1,19 @@
 {
-  "name": "aicanvas",
+  "name": "click",
   "owner": {
-    "name": "AI-Hub-Growth",
-    "url": "https://github.com/AI-Hub-Growth"
+    "name": "manfei1024",
+    "url": "https://github.com/manfei1024"
   },
-  "description": "AICanvas（灯虹）对话式短剧制作、图片视频生成与素材管理技能包。",
+  "description": "Click 对话式短剧制作、图片视频生成与素材管理技能包。",
   "plugins": [
     {
-      "name": "aicanvas",
-      "source": "./plugins/aicanvas",
-      "description": "AICanvas（灯虹）短剧制作技能包：aicanvas-drama 做整部短剧，aicanvas-media 生成单张图/单条视频，aicanvas-assets 管理素材库与合规预审核。",
-      "version": "0.1.0-rc.2",
+      "name": "click",
+      "source": "./plugins/click",
+      "description": "Click 短剧制作技能包：click-drama 做整部短剧，click-media 生成单张图/单条视频，click-assets 管理素材库与合规预审核。",
+      "version": "0.1.0-rc.3",
       "license": "MIT",
-      "homepage": "https://github.com/AI-Hub-Growth/skills",
-      "keywords": ["aicanvas", "短剧", "video-generation", "storyboard"]
+      "homepage": "https://github.com/manfei1024/skills",
+      "keywords": ["click", "短剧", "video-generation", "storyboard"]
     }
   ]
 }

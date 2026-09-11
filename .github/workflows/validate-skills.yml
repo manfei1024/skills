@@ -19,4 +19,4 @@ jobs:
       - name: 运行离线测试
         run: python3 -m unittest discover -s tests -v
       - name: 编译 Python 脚本
-        run: python3 -m py_compile scripts/validate.py plugins/aicanvas/common/scripts/aicanvas_api.py plugins/aicanvas/common/scripts/check_version.py
+        run: python3 -m py_compile scripts/validate.py plugins/click/common/scripts/click_api.py plugins/click/common/scripts/check_version.py

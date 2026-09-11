@@ -1,0 +1,26 @@
+{
+  "name": "click",
+  "version": "0.1.0-rc.3",
+  "description": "用对话完成 Click 短剧制作：剧本、参考图、分镜、分集视频、导出，以及单张图/单条视频生成和素材库管理。",
+  "author": {
+    "name": "manfei1024"
+  },
+  "homepage": "https://github.com/manfei1024/skills",
+  "repository": "https://github.com/manfei1024/skills",
+  "license": "MIT",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Click",
+    "shortDescription": "对话式短剧制作与 AI 图片/视频生成",
+    "longDescription": "在 Codex 中通过 Click API 完成短剧剧本、参考图、分镜、分集视频和导出，也支持单张图片、单条视频生成以及素材库管理。扣费提交前会查询模型、给出预估并等待确认。",
+    "developerName": "manfei1024",
+    "category": "Creativity",
+    "capabilities": ["Read", "Write"],
+    "websiteURL": "https://github.com/manfei1024/skills",
+    "defaultPrompt": [
+      "用 Click 把我的故事做成一部短剧",
+      "用 Click 生成一段短视频",
+      "帮我整理 Click 素材库"
+    ]
+  }
+}

@@ -1,10 +1,19 @@
 # Changelog
 
-本技能包版本跟随 AICanvas（灯虹）对外 API 契约。接口路径、必填参数、扣费口径、`auto-produce` 阶段枚举、`model-list` 字段语义发生变化时发新版本。
+本技能包版本跟随 Click 对外 API 契约。接口路径、必填参数、扣费口径、`auto-produce` 阶段枚举、`model-list` 字段语义发生变化时发新版本。
 
 格式参照 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.1.0/)，版本号遵循 [语义化版本](https://semver.org/lang/zh-CN/)。
 
 ## [Unreleased]
+
+## [0.1.0-rc.3] - 2026-09-11
+
+### Changed
+
+- **Breaking**：仓库来源从 `AI-Hub-Growth/skills` 迁移到 `manfei1024/skills`。Marketplace/插件名 `aicanvas` → `click`，插件 id `aicanvas@aicanvas` → `click@click`，三个技能改名 `click-drama` / `click-media` / `click-assets`。
+- 环境变量 `AICANVAS_HOST` / `AICANVAS_API_KEY` → `CLICK_HOST` / `CLICK_API_KEY`；`API Key` 前缀 `cak_` 不变。
+- 默认 Host 改为 `https://click.vibehub.art`。
+- 旧版 `aicanvas@aicanvas` 用户需卸载重装，并按新变量名重新配置 `CLICK_HOST` / `CLICK_API_KEY`。
 
 ## [0.1.0-rc.2] - 2026-08-20
 
@@ -21,16 +30,16 @@
 
 首个版本。
 
-候选版发布前统一产品英文名为 AICanvas、中文名为灯虹；插件与三个 skill、环境变量、状态文件和辅助脚本均使用 `aicanvas` / `AICANVAS_*` 命名，不保留未发布旧名称的兼容别名。
+候选版发布前统一产品英文名为 Click、中文名为 Click；插件与三个 skill、环境变量、状态文件和辅助脚本均使用 `click` / `CLICK_*` 命名，不保留未发布旧名称的兼容别名。
 
 ### Added
 
-- `aicanvas-drama` —— 整部短剧制作。一键链路（`POST /api/storyboards/auto-produce`）与分步链路（建项目 → 剧本 → 资产 → 参考图 → 分镜项目 → 分镜 → 分集视频 → 导出）双路径，含分镜导出/编辑/preview/apply 往返流程。
-- `aicanvas-media` —— 单张图片（`POST /api/ai/image/task`）、单条视频（`POST /api/ai/video/task`）、提示词润色（`POST /api/prompts/generate`）。
-- `aicanvas-assets` —— 素材库目录与资产管理、审核素材库合规预审核。
-- `plugins/aicanvas/common/` 共享规则：`auth.md`、`models.md`、`billing.md`、`async-tasks.md`、`errors.md`、`upload.md`、`api-index.md`。
+- `click-drama` —— 整部短剧制作。一键链路（`POST /api/storyboards/auto-produce`）与分步链路（建项目 → 剧本 → 资产 → 参考图 → 分镜项目 → 分镜 → 分集视频 → 导出）双路径，含分镜导出/编辑/preview/apply 往返流程。
+- `click-media` —— 单张图片（`POST /api/ai/image/task`）、单条视频（`POST /api/ai/video/task`）、提示词润色（`POST /api/prompts/generate`）。
+- `click-assets` —— 素材库目录与资产管理、审核素材库合规预审核。
+- `plugins/click/common/` 共享规则：`auth.md`、`models.md`、`billing.md`、`async-tasks.md`、`errors.md`、`upload.md`、`api-index.md`。
 - 共享 HTTP/状态脚本：校验 HTTPS Host、拒绝跨域与重定向、检查 HTTP/业务错误、原子记录任务类型和轮询路径。
-- Claude Code 与 Codex marketplace 清单，插件实体位于标准 `plugins/aicanvas/` 布局。
+- Claude Code 与 Codex marketplace 清单，插件实体位于标准 `plugins/click/` 布局。
 - 安装文档：`INSTALL.md`（给人看）、`INSTALL_FOR_AGENTS.md`（给 agent 看）。
 - CI 校验 `scripts/validate.py`：frontmatter、链接与锚点、manifest、恢复契约、版本一致性、明文密钥和生成文件检测；附共享脚本离线单测。
 
@@ -41,6 +50,7 @@
 - HTTP 提交与本地状态不能组成跨系统事务；提交结果不明确时默认禁止自动重发，并先通过读取接口对账。
 - Cursor 安装尚未实装验证；首版正式支持 Claude Code 与 Codex。
 
-[0.1.0-rc.1]: https://github.com/AI-Hub-Growth/skills/releases/tag/v0.1.0-rc.1
-[0.1.0-rc.2]: https://github.com/AI-Hub-Growth/skills/releases/tag/v0.1.0-rc.2
-[Unreleased]: https://github.com/AI-Hub-Growth/skills/compare/v0.1.0-rc.2...HEAD
+[0.1.0-rc.1]: https://github.com/manfei1024/skills/releases/tag/v0.1.0-rc.1
+[0.1.0-rc.2]: https://github.com/manfei1024/skills/releases/tag/v0.1.0-rc.2
+[0.1.0-rc.3]: https://github.com/manfei1024/skills/releases/tag/v0.1.0-rc.3
+[Unreleased]: https://github.com/manfei1024/skills/compare/v0.1.0-rc.3...HEAD

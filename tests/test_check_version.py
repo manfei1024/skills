@@ -7,7 +7,7 @@ from unittest import mock
 
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
-MODULE_PATH = ROOT / "plugins" / "aicanvas" / "common" / "scripts" / "check_version.py"
+MODULE_PATH = ROOT / "plugins" / "click" / "common" / "scripts" / "check_version.py"
 SPEC = importlib.util.spec_from_file_location("check_version", MODULE_PATH)
 check_version = importlib.util.module_from_spec(SPEC)
 assert SPEC.loader
@@ -16,7 +16,7 @@ SPEC.loader.exec_module(check_version)
 
 class VersionCheckTests(unittest.TestCase):
     def test_reads_version_from_local_plugin_manifest(self):
-        manifest = ROOT / "plugins" / "aicanvas" / ".codex-plugin" / "plugin.json"
+        manifest = ROOT / "plugins" / "click" / ".codex-plugin" / "plugin.json"
         expected = json.loads(manifest.read_text(encoding="utf-8"))["version"]
         self.assertEqual(check_version.read_local_version(manifest), expected)
 

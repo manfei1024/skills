@@ -1,14 +1,14 @@
 {
-  "name": "aicanvas",
+  "name": "click",
   "interface": {
-    "displayName": "AICanvas（灯虹）"
+    "displayName": "Click"
   },
   "plugins": [
     {
-      "name": "aicanvas",
+      "name": "click",
       "source": {
         "source": "local",
-        "path": "./plugins/aicanvas"
+        "path": "./plugins/click"
       },
       "policy": {
         "installation": "AVAILABLE",

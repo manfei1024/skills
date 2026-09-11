@@ -1,6 +1,6 @@
-# AICanvas（灯虹） Agent Skills
+# Click Agent Skills
 
-在 codex / Claude Code 里用对话完成短剧制作，不用打开灯虹网页。
+在 codex / Claude Code 里用对话完成短剧制作，不用打开 Click 网页。
 
 你说"把这个剧本做成 3 集短剧"，agent 自己查模型、算预估、提交任务、静默轮询、交付成片。
 
@@ -8,11 +8,11 @@
 
 | 技能 | 产物 | 什么时候用 |
 |---|---|---|
-| **aicanvas-drama** | 一部短剧（多集、成片） | "把这个剧本拍出来"、"做一部 5 集的"、"我的分镜表导进去出片" |
-| **aicanvas-media** | 单张图 / 单条视频 | "画一张…"、"生成一段 5 秒的海浪"、"首尾帧做个转场" |
-| **aicanvas-assets** | 素材库与合规预审核（不生成） | "把素材整理到文件夹"、"这几张图能过审吗" |
+| **click-drama** | 一部短剧（多集、成片） | "把这个剧本拍出来"、"做一部 5 集的"、"我的分镜表导进去出片" |
+| **click-media** | 单张图 / 单条视频 | "画一张…"、"生成一段 5 秒的海浪"、"首尾帧做个转场" |
+| **click-assets** | 素材库与合规预审核（不生成） | "把素材整理到文件夹"、"这几张图能过审吗" |
 
-共享规则（鉴权、模型选型、计费、异步任务、错误处置、上传、接口索引）在 [`plugins/aicanvas/common/`](plugins/aicanvas/common/)，三个技能都指过去。
+共享规则（鉴权、模型选型、计费、异步任务、错误处置、上传、接口索引）在 [`plugins/click/common/`](plugins/click/common/)，三个技能都指过去。
 
 ## 安装
 
@@ -21,10 +21,10 @@
 普通用户只需要 API Key：
 
 ```bash
-export AICANVAS_API_KEY="cak_..."     # 控制台「个人中心 → API Keys」创建
+export CLICK_API_KEY="cak_..."     # 控制台「个人中心 → API Keys」创建
 ```
 
-默认 API 地址是 `https://click.vibehub.art`。只有本地开发或私有部署才设置 `AICANVAS_HOST` 覆盖，例如 `http://127.0.0.1:8080`。
+默认 API 地址是 `https://click.vibehub.art`。只有本地开发或私有部署才设置 `CLICK_HOST` 覆盖，例如 `http://127.0.0.1:8080`。
 
 ## 三件必须知道的事
 
@@ -34,7 +34,7 @@ export AICANVAS_API_KEY="cak_..."     # 控制台「个人中心 → API Keys」
 
 ## 设计取舍
 
-灯虹没有 CLI 也没有 MCP server。技能包提供一个很薄的共享 HTTP/状态脚本，负责 Host 限制、错误检查和断线续跑；制片判断仍由 agent 按 **BLOCKING** 门执行：
+Click 没有 CLI 也没有 MCP server。技能包提供一个很薄的共享 HTTP/状态脚本，负责 Host 限制、错误检查和断线续跑；制片判断仍由 agent 按 **BLOCKING** 门执行：
 
 - **模型 ID / 分辨率 / 画幅 / 时长必须来自 `GET /api/ai/model-list` 实时返回**，禁止硬编码
 - **导入分镜必须先 `imports/preview`**，把 diff 给人核对过再 apply
@@ -47,7 +47,7 @@ export AICANVAS_API_KEY="cak_..."     # 控制台「个人中心 → API Keys」
 
 ## 文档来源
 
-所有接口路径、方法、必填参数都逐条对照灯虹的公开 API 文档站写成。**不参照已过时的 `api-summary.md`。**
+所有接口路径、方法、必填参数都逐条对照 Click 的公开 API 文档站写成。**不参照已过时的 `api-summary.md`。**
 
 已知缺口：平台未公开并发上限与单次批量条数上限，技能包按保守默认（同时不超过 3 个生成任务）处理。
 

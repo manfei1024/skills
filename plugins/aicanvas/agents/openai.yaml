@@ -1,4 +1,0 @@
-interface:
-  display_name: "AICanvas（灯虹）"
-  short_description: "对话式短剧制作与 AI 图片/视频生成"
-  default_prompt: "用灯虹帮我完成短剧、图片、视频或素材管理任务；生成前先查询可用模型、给出积分预估，并等待我确认。"

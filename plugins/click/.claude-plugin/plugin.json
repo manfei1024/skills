@@ -1,0 +1,21 @@
+{
+  "name": "click",
+  "version": "0.1.0-rc.3",
+  "description": "用对话完成 Click 短剧制作：剧本、参考图、分镜、分集视频、导出，以及单张图/单条视频生成和素材库管理。",
+  "author": {
+    "name": "manfei1024"
+  },
+  "homepage": "https://github.com/manfei1024/skills",
+  "repository": "https://github.com/manfei1024/skills",
+  "license": "MIT",
+  "keywords": [
+    "click",
+    "Click",
+    "短剧",
+    "short-drama",
+    "video-generation",
+    "image-generation",
+    "storyboard",
+    "ai-video"
+  ]
+}

@@ -2,7 +2,7 @@
 
 ## 1. 拿 API Key
 
-只能在灯虹**控制台网页**创建：**个人中心 → API Keys → 新建**。
+只能在 Click**控制台网页**创建：**个人中心 → API Keys → 新建**。
 
 - 需要**团队所有者（owner）或管理员（admin）**身份，普通成员看不到入口
 - 明文只在创建和重置时显示一次，**当场存好**
@@ -13,37 +13,37 @@
 ## 2. 设 API Key
 
 ```bash
-export AICANVAS_API_KEY="cak_..."
+export CLICK_API_KEY="cak_..."
 ```
 
-默认请求 `https://click.vibehub.art`，普通用户不用设置 Host。本地运行 canvas 时覆盖为 `export AICANVAS_HOST="http://127.0.0.1:8080"`。5173 是 Vite 前端及浏览器入口；虽然会代理 `/api`，Skill 的 API 测试应直连 8080。
+默认请求 `https://click.vibehub.art`，普通用户不用设置 Host。本地运行 canvas 时覆盖为 `export CLICK_HOST="http://127.0.0.1:8080"`。5173 是 Vite 前端及浏览器入口；虽然会代理 `/api`，Skill 的 API 测试应直连 8080。
 
 写进 `~/.zshrc` / `~/.bashrc` 或用你惯用的密钥管理工具。**不要提交到 git。**
 
 ## 3. 装技能包
 
-如果之前测试过旧名称，先卸载 `linc@linc`、移除旧 marketplace，再重新添加仓库；本候选版不保留旧名称兼容入口。新插件标识是 `aicanvas@aicanvas`。
+如果之前测试过旧名称，先卸载 `linc@linc`、移除旧 marketplace，再重新添加仓库；本候选版不保留旧名称兼容入口。新插件标识是 `click@click`。
 
 ### Claude Code
 
 **方式 A：插件市场**
 
 ```
-/plugin marketplace add AI-Hub-Growth/skills
-/plugin install aicanvas@aicanvas
+/plugin marketplace add manfei1024/skills
+/plugin install click@click
 ```
 
 ### Codex
 
 ```text
-codex plugin marketplace add AI-Hub-Growth/skills
-codex plugin add aicanvas@aicanvas
+codex plugin marketplace add manfei1024/skills
+codex plugin add click@click
 ```
 
 ### Cursor
 
 ```bash
-git clone --depth 1 https://github.com/AI-Hub-Growth/skills.git ~/.cursor/skills/aicanvas
+git clone --depth 1 https://github.com/manfei1024/skills.git ~/.cursor/skills/click
 ```
 
 Cursor 的递归 skill 发现尚未纳入本版实装验证；正式支持范围目前是 Claude Code 和 Codex。
@@ -53,7 +53,7 @@ Cursor 的递归 skill 发现尚未纳入本版实装验证；正式支持范围
 把某个 SKILL.md 的 raw 链接直接丢给 agent 让它读：
 
 ```
-https://raw.githubusercontent.com/AI-Hub-Growth/skills/main/plugins/aicanvas/skills/aicanvas-drama/SKILL.md
+https://raw.githubusercontent.com/manfei1024/skills/main/plugins/click/skills/click-drama/SKILL.md
 ```
 
 它会顺着相对链接找到 `common/` 和 `references/`。适合临时试用。
@@ -62,21 +62,21 @@ https://raw.githubusercontent.com/AI-Hub-Growth/skills/main/plugins/aicanvas/ski
 
 装完在 agent 里说一句：
 
-> 用灯虹查一下有哪些可用的视频模型
+> 用 Click 查一下有哪些可用的视频模型
 
 预期行为：agent 调 `GET /api/ai/model-list?model_type=video`（这个接口不用鉴权），列出模型的展示名、支持的分辨率/画幅/时长和大致价格。
 
 再验一次鉴权：
 
-> 帮我确认下灯虹的 API Key 能用
+> 帮我确认下 Click 的 API Key 能用
 
 预期：agent 调 `GET /api/auth/me`，返回身份信息就是通的。
 
 手动验：
 
 ```bash
-curl -s "${AICANVAS_HOST:-https://click.vibehub.art}/api/auth/me" -H "Authorization: Bearer $AICANVAS_API_KEY"
-curl -s "${AICANVAS_HOST:-https://click.vibehub.art}/api/ai/model-list?model_type=video"
+curl -s "${CLICK_HOST:-https://click.vibehub.art}/api/auth/me" -H "Authorization: Bearer $CLICK_API_KEY"
+curl -s "${CLICK_HOST:-https://click.vibehub.art}/api/ai/model-list?model_type=video"
 ```
 
 第一条返回 `Unauthorized` → 密钥无效、过期或已停用，去控制台重置。
@@ -87,9 +87,9 @@ curl -s "${AICANVAS_HOST:-https://click.vibehub.art}/api/ai/model-list?model_typ
 
 | 你说 | 应该选中 |
 |---|---|
-| "生成一段 5 秒的海浪视频" | `aicanvas-media` |
-| "把这个剧本做成 3 集短剧" | `aicanvas-drama` |
-| "把这些素材整理进一个文件夹" | `aicanvas-assets` |
+| "生成一段 5 秒的海浪视频" | `click-media` |
+| "把这个剧本做成 3 集短剧" | `click-drama` |
+| "把这些素材整理进一个文件夹" | `click-assets` |
 
 ## 权限说明
 

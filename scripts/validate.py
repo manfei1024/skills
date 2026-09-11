@@ -8,11 +8,11 @@ import sys
 import urllib.parse
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PLUGIN_ROOT = os.path.join(ROOT, "plugins", "aicanvas")
+PLUGIN_ROOT = os.path.join(ROOT, "plugins", "click")
 SKILLS = [
-    "plugins/aicanvas/skills/aicanvas-drama",
-    "plugins/aicanvas/skills/aicanvas-media",
-    "plugins/aicanvas/skills/aicanvas-assets",
+    "plugins/click/skills/click-drama",
+    "plugins/click/skills/click-media",
+    "plugins/click/skills/click-assets",
 ]
 REQUIRED_FIELDS = ["name", "description"]
 
@@ -139,9 +139,9 @@ def check_versions():
         return
 
     for manifest in [
-        "plugins/aicanvas/.claude-plugin/plugin.json",
+        "plugins/click/.claude-plugin/plugin.json",
         ".claude-plugin/marketplace.json",
-        "plugins/aicanvas/.codex-plugin/plugin.json",
+        "plugins/click/.codex-plugin/plugin.json",
     ]:
         path = os.path.join(ROOT, manifest)
         if not os.path.isfile(path):
@@ -188,10 +188,10 @@ def check_no_secrets():
 
 def check_manifests():
     for manifest in [
-        "plugins/aicanvas/.claude-plugin/plugin.json",
+        "plugins/click/.claude-plugin/plugin.json",
         ".claude-plugin/marketplace.json",
         ".agents/plugins/marketplace.json",
-        "plugins/aicanvas/.codex-plugin/plugin.json",
+        "plugins/click/.codex-plugin/plugin.json",
     ]:
         path = os.path.join(ROOT, manifest)
         if not os.path.isfile(path):
@@ -213,36 +213,36 @@ def check_manifests():
         with open(codex, encoding="utf-8") as f:
             data = json.load(f)
         if data.get("skills") != "./skills/":
-            fail("plugins/aicanvas/.codex-plugin/plugin.json: skills 必须指向 `./skills/`")
+            fail("plugins/click/.codex-plugin/plugin.json: skills 必须指向 `./skills/`")
         allowed = {
             "name", "version", "description", "author", "homepage", "repository",
             "license", "keywords", "skills", "interface", "apps", "mcpServers",
         }
         extra = sorted(set(data) - allowed)
         if extra:
-            fail(f"plugins/aicanvas/.codex-plugin/plugin.json: Codex 不支持字段 {extra}")
+            fail(f"plugins/click/.codex-plugin/plugin.json: Codex 不支持字段 {extra}")
 
     marketplace = os.path.join(ROOT, ".agents/plugins/marketplace.json")
     if os.path.isfile(marketplace):
         with open(marketplace, encoding="utf-8") as f:
             data = json.load(f)
-        entries = [item for item in data.get("plugins", []) if item.get("name") == "aicanvas"]
+        entries = [item for item in data.get("plugins", []) if item.get("name") == "click"]
         if len(entries) != 1:
-            fail(".agents/plugins/marketplace.json: 必须有且仅有一个 aicanvas 条目")
+            fail(".agents/plugins/marketplace.json: 必须有且仅有一个 click 条目")
         else:
             entry = entries[0]
-            if entry.get("source") != {"source": "local", "path": "./plugins/aicanvas"}:
-                fail(".agents/plugins/marketplace.json: aicanvas source 必须指向 ./plugins/aicanvas")
+            if entry.get("source") != {"source": "local", "path": "./plugins/click"}:
+                fail(".agents/plugins/marketplace.json: click source 必须指向 ./plugins/click")
             policy = entry.get("policy", {})
             if policy.get("installation") != "AVAILABLE" or policy.get("authentication") != "ON_INSTALL":
-                fail(".agents/plugins/marketplace.json: aicanvas policy 不完整")
+                fail(".agents/plugins/marketplace.json: click policy 不完整")
 
     skills_dir = os.path.join(PLUGIN_ROOT, "skills")
     if os.path.isdir(skills_dir):
         for name in os.listdir(skills_dir):
             path = os.path.join(skills_dir, name)
             if os.path.isdir(path) and not os.path.isfile(os.path.join(path, "SKILL.md")):
-                fail(f"plugins/aicanvas/skills/{name}: skills 一级目录必须包含 SKILL.md")
+                fail(f"plugins/click/skills/{name}: skills 一级目录必须包含 SKILL.md")
 
 
 def check_no_generated_files():
@@ -271,11 +271,11 @@ def check_recovery_contract():
 
 def check_uploaded_asset_contract():
     required = {
-        "plugins/aicanvas/common/upload.md": ["可选的管理步骤", "source=uploaded", "source=imported", "不查询对应的 media_asset"],
-        "plugins/aicanvas/common/api-index.md": ["/api/media", "source=uploaded", "source=imported"],
-        "plugins/aicanvas/skills/aicanvas-assets/SKILL.md": ["/api/media", 'source":"uploaded', "source=imported", "只保存引用"],
-        "plugins/aicanvas/skills/aicanvas-media/SKILL.md": ["不需要先创建素材记录", "可选的管理步骤", "source=imported"],
-        "plugins/aicanvas/skills/aicanvas-drama/references/stepwise.md": ["POST /api/media", "data.id", "referenceAssetIdList"],
+        "plugins/click/common/upload.md": ["可选的管理步骤", "source=uploaded", "source=imported", "不查询对应的 media_asset"],
+        "plugins/click/common/api-index.md": ["/api/media", "source=uploaded", "source=imported"],
+        "plugins/click/skills/click-assets/SKILL.md": ["/api/media", 'source":"uploaded', "source=imported", "只保存引用"],
+        "plugins/click/skills/click-media/SKILL.md": ["不需要先创建素材记录", "可选的管理步骤", "source=imported"],
+        "plugins/click/skills/click-drama/references/stepwise.md": ["POST /api/media", "data.id", "referenceAssetIdList"],
     }
     for relative_path, markers in required.items():
         path = os.path.join(ROOT, relative_path)
